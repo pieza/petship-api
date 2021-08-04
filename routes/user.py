@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Response, Depends, status 
 from config.db import db
-from config.auth import JWTBearer
+from config.security.jwt_bearer import JWTBearer
 from utils.crypt import encrypt_password, check_password
 from schemas.user import userEntity, usersEntity
 from models.user import User
