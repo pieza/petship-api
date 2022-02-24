@@ -20,7 +20,7 @@ def find_one(_id: str):
 
 @router.post('/users', dependencies=[Depends(JWTBearer())], response_model=User, tags=["users"])
 def create(user: User):
-    new_user = dict(user)
+    new_user = user.dict()
     new_user['password'] = encrypt_password(new_user['password'])
     del new_user['_id']
     _id = db.user.insert_one(new_user).inserted_id
