@@ -20,7 +20,7 @@ def find_one(_id: str):
 @router.post('/pets', dependencies=[Depends(JWTBearer())], response_model=Pet, tags=["pets"])
 def create(pet: Pet):
     new_pet = pet.dict()
-    del new_pet['_id']
+    del new_pet["id"]
     _id = db.pet.insert_one(new_pet).inserted_id
     pet = db.pet.find_one({ '_id': _id })
     return petEntity(pet)

@@ -1,6 +1,6 @@
 def petEntity(item) -> dict:
     return {
-        'id': str(item['_id']),
+        '_id': str(item['_id']),
         'owner': str(item['owner']),
         'name': item['name'],
         'type': item['type'],

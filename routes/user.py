@@ -18,14 +18,14 @@ def find_one(_id: str):
     user = db.user.find_one({ '_id': ObjectId(_id) })
     return userEntity(user)
 
-@router.post('/users', dependencies=[Depends(JWTBearer())], response_model=User, tags=["users"])
-def create(user: User):
-    new_user = user.dict()
-    new_user['password'] = encrypt_password(new_user['password'])
-    del new_user['_id']
-    _id = db.user.insert_one(new_user).inserted_id
-    user = db.user.find_one({ '_id': _id })
-    return userEntity(user)
+# @router.post('/users', dependencies=[Depends(JWTBearer())], response_model=User, tags=["users"])
+# def create(user: User):
+#     new_user = user.dict()
+#     new_user['password'] = encrypt_password(new_user['password'])
+#     del new_user['_id']
+#     _id = db.user.insert_one(new_user).inserted_id
+#     user = db.user.find_one({ '_id': _id })
+#     return userEntity(user)
 
 @router.put('/users/{_id}', dependencies=[Depends(JWTBearer())], response_model=User, tags=["users"])
 def update(_id: str, user: User):
