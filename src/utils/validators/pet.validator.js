@@ -20,7 +20,7 @@ module.exports = function validatePetInput(data) {
   if (Validator.isEmpty(data.race)) 
     errors.race = 'La raza es requerida'
 
-  if (!(Validator.equals(data.gender, 'male' || Validator.equals(data.gender, 'female')))) 
+  if (!(Validator.equals(data.gender, 'male') || Validator.equals(data.gender, 'female')))
     errors.gender = 'Inserte sexo válido'
   
   if (Validator.isEmpty(data.gender)) 
